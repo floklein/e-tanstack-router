@@ -1,4 +1,4 @@
-import { createRoute } from "@tanstack/react-router";
+import { createRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { z } from "zod";
 import { fetchProducts, searchProducts } from "../api";
 import { rootRoute } from "./rootRoute";
@@ -15,6 +15,5 @@ export const productsRoute = createRoute({
       ? await searchProducts(search)
       : await fetchProducts();
   },
-}).lazy(() =>
-  import("../components/Products").then((module) => module.ProductsRoute),
-);
+  component: lazyRouteComponent(() => import("../components/Products")),
+});

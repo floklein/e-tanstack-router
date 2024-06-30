@@ -1,4 +1,8 @@
-import { createRoute, redirect } from "@tanstack/react-router";
+import {
+  createRoute,
+  lazyRouteComponent,
+  redirect,
+} from "@tanstack/react-router";
 import { rootRoute } from "./rootRoute";
 
 export const cartRoute = createRoute({
@@ -14,4 +18,5 @@ export const cartRoute = createRoute({
       });
     }
   },
-}).lazy(() => import("../components/Cart").then((module) => module.CartRoute));
+  component: lazyRouteComponent(() => import("../components/Cart")),
+});

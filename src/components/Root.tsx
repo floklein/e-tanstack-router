@@ -16,7 +16,9 @@ import { ShoppingCart } from "@mui/icons-material";
 import User from "./User";
 
 export default function Root() {
-  const loading = useRouterState({ select: (state) => state.isLoading });
+  const loading = useRouterState({
+    select: (state) => state.status === "pending",
+  });
 
   return (
     <>

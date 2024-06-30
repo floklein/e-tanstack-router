@@ -1,4 +1,4 @@
-import { createLazyRoute, useRouter } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 import {
   Button,
   Card,
@@ -11,17 +11,14 @@ import {
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { loginUser } from "../api";
 import { useAuth } from "../zustand/auth";
+import { loginRoute } from "../router/loginRoute";
 
-export const LoginRoute = createLazyRoute("/login")({
-  component: Login,
-});
-
-function Login() {
+export default function Login() {
   const router = useRouter();
 
-  const navigate = LoginRoute.useNavigate();
-  const { redirect } = LoginRoute.useSearch();
-  const users = LoginRoute.useLoaderData();
+  const navigate = loginRoute.useNavigate();
+  const redirect = loginRoute.useSearch({ select: (s) => s.redirect });
+  const users = loginRoute.useLoaderData();
 
   const login = useAuth((state) => state.login);
 

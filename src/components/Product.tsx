@@ -1,4 +1,4 @@
-import { createLazyRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import {
   Box,
   Button,
@@ -10,22 +10,18 @@ import {
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Masonry } from "@mui/lab";
-
-export const ProductRoute = createLazyRoute("/product/$productId")({
-  component: Product,
-});
+import { productRoute } from "../router/productRoute";
 
 const Image = styled("img")({
   objectFit: "contain",
   display: "block",
 });
 
-function Product() {
-  const { productId } = ProductRoute.useParams();
-  const product = ProductRoute.useLoaderData();
+export default function Product() {
+  const product = productRoute.useLoaderData();
 
-  const previous = Number(productId) - 1;
-  const next = Number(productId) + 1;
+  const previous = Number(product.id) - 1;
+  const next = Number(product.id) + 1;
 
   return (
     <Container>

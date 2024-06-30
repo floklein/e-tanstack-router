@@ -1,4 +1,8 @@
-import { createRoute, redirect } from "@tanstack/react-router";
+import {
+  createRoute,
+  lazyRouteComponent,
+  redirect,
+} from "@tanstack/react-router";
 import { fetchUsers } from "../api";
 import { z } from "zod";
 import { rootRoute } from "./rootRoute";
@@ -19,6 +23,5 @@ export const loginRoute = createRoute({
   loader: async () => {
     return await fetchUsers();
   },
-}).lazy(() =>
-  import("../components/Login").then((module) => module.LoginRoute),
-);
+  component: lazyRouteComponent(() => import("../components/Login")),
+});
