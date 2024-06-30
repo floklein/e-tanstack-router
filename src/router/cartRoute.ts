@@ -1,15 +1,11 @@
-import { rootRoute } from "../components/Root";
 import { createRoute, redirect } from "@tanstack/react-router";
+import { rootRoute } from "./rootRoute";
 
 export const cartRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "cart",
-  beforeLoad: async ({
-    context: {
-      auth: { isAuthenticated },
-    },
-  }) => {
-    if (!isAuthenticated) {
+  beforeLoad: async ({ context }) => {
+    if (!context.auth.isAuthenticated) {
       throw redirect({
         to: "/login",
         search: {

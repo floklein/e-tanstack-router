@@ -1,7 +1,7 @@
 import { createRoute } from "@tanstack/react-router";
-import { rootRoute } from "../components/Root";
 import { z } from "zod";
 import { fetchProducts, searchProducts } from "../api";
+import { rootRoute } from "./rootRoute";
 
 export const productsRoute = createRoute({
   getParentRoute: () => rootRoute,

@@ -10,9 +10,9 @@ import {
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Masonry } from "@mui/lab";
-import { productRoute } from "../routes/productRoute";
+import { productRoute } from "../router/productRoute";
 
-export const ProductRoute = createLazyRoute("/$productId")({
+export const ProductRoute = createLazyRoute("/product/$productId")({
   component: Product,
 });
 
@@ -40,12 +40,16 @@ function Product() {
         <Button
           disabled={previous <= 0}
           component={Link}
-          to={`/${previous}`}
+          to={`/product/${previous}`}
           startIcon={<ArrowBackIos />}
         >
           Previous
         </Button>
-        <Button component={Link} to={`/${next}`} endIcon={<ArrowForwardIos />}>
+        <Button
+          component={Link}
+          to={`/product/${next}`}
+          endIcon={<ArrowForwardIos />}
+        >
           Next
         </Button>
       </Toolbar>

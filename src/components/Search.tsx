@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import { ChangeEvent, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { productsRoute } from "../routes/productsRoute";
+import { productsRoute } from "../router/productsRoute";
 
 export default function Search() {
   const navigate = useNavigate({ from: productsRoute.fullPath });

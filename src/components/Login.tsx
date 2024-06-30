@@ -1,5 +1,5 @@
 import { createLazyRoute, useNavigate } from "@tanstack/react-router";
-import { loginRoute } from "../routes/loginRoute";
+import { loginRoute } from "../router/loginRoute";
 import {
   Button,
   Card,

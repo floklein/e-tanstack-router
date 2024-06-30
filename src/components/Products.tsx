@@ -10,7 +10,7 @@ import {
   styled,
   alpha,
 } from "@mui/material";
-import { productsRoute } from "../routes/productsRoute";
+import { productsRoute } from "../router/productsRoute";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Search from "./Search";
 
@@ -49,7 +49,7 @@ function Products() {
             <Card elevation={0} sx={{ height: 1 }}>
               <CardActionArea
                 component={Link}
-                to={`/${product.id}`}
+                to={`/product/${product.id}`}
                 sx={{ height: 1 }}
               >
                 <CardMedia

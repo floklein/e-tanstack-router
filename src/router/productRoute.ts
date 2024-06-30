@@ -1,10 +1,10 @@
 import { createRoute } from "@tanstack/react-router";
-import { rootRoute } from "../components/Root";
 import { fetchProduct } from "../api";
+import { rootRoute } from "./rootRoute";
 
 export const productRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "$productId",
+  path: "product/$productId",
   loader: ({ params }) => fetchProduct(params.productId),
 }).lazy(() =>
   import("../components/Product").then((module) => module.ProductRoute),

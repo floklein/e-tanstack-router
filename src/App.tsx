@@ -1,7 +1,7 @@
 import { RouterProvider } from "@tanstack/react-router";
-import { router } from "./routes";
+import { router } from "./router";
 import { Suspense } from "react";
-import { TanStackRouterDevtools } from "./routes/TanStackRouterDevtools";
+import { TanStackRouterDevtools } from "./router/TanStackRouterDevtools";
 import { useAuth } from "./zustand/auth";
 
 export default function App() {

@@ -1,17 +1,13 @@
-import { rootRoute } from "../components/Root";
 import { createRoute, redirect } from "@tanstack/react-router";
 import { fetchUsers } from "../api";
 import { z } from "zod";
+import { rootRoute } from "./rootRoute";
 
 export const loginRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "login",
-  beforeLoad: async ({
-    context: {
-      auth: { isAuthenticated },
-    },
-  }) => {
-    if (isAuthenticated) {
+  beforeLoad: async ({ context }) => {
+    if (context.auth.isAuthenticated) {
       throw redirect({
         to: "/",
       });
