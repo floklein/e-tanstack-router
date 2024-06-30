@@ -12,13 +12,14 @@
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
     "@mui/icons-material": "next",
-    "@mui/material": "next",
     "@mui/lab": "next",
+    "@mui/material": "next",
     "@tanstack/react-router": "latest",
     "@tanstack/router-devtools": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@eslint/compat": "^1.1.0",

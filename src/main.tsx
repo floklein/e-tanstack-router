@@ -2,19 +2,14 @@ import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import theme from "./theme";
-import { StrictMode, Suspense } from "react";
-import { RouterProvider } from "@tanstack/react-router";
-import { router } from "./routes";
-import { TanStackRouterDevtools } from "./routes/TanStackRouterDevtools";
+import { StrictMode } from "react";
+import App from "./App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <RouterProvider router={router} />
-      <Suspense>
-        <TanStackRouterDevtools router={router} />
-      </Suspense>
+      <App />
     </ThemeProvider>
   </StrictMode>,
 );

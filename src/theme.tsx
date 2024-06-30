@@ -42,6 +42,13 @@ const theme = createTheme({
         }),
       },
     },
+    MuiAvatar: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          backgroundColor: theme.palette.background.default,
+        }),
+      },
+    },
   },
 });
 
