@@ -20,8 +20,8 @@ const Image = styled("img")({
 export default function Product() {
   const product = productRoute.useLoaderData();
 
-  const previous = Number(product.id) - 1;
-  const next = Number(product.id) + 1;
+  const previous = product.id - 1;
+  const next = product.id + 1;
 
   return (
     <Container>
