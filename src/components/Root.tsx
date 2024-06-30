@@ -1,5 +1,6 @@
 import {
   createRootRoute,
+  Link,
   Outlet,
   ScrollRestoration,
 } from "@tanstack/react-router";
@@ -15,7 +16,7 @@ function Root() {
       <ScrollRestoration getKey={(location) => location.pathname} />
       <AppBar position="sticky">
         <Toolbar>
-          <Typography variant="h6" color="inherit" component="div">
+          <Typography variant="h6" color="inherit" component={Link} to="/">
             App
           </Typography>
         </Toolbar>
