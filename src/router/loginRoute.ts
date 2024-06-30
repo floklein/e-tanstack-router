@@ -6,10 +6,10 @@ import { rootRoute } from "./rootRoute";
 export const loginRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "login",
-  beforeLoad: async ({ context }) => {
+  beforeLoad: async ({ context, search }) => {
     if (context.auth.isAuthenticated) {
       throw redirect({
-        to: "/",
+        to: search.redirect ?? "/",
       });
     }
   },

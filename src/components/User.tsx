@@ -7,10 +7,13 @@ import {
 } from "@mui/material";
 import { Login } from "@mui/icons-material";
 import { useAuth } from "../zustand/auth";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 
 export default function User() {
+  const router = useRouter();
+  const navigate = useNavigate();
+
   const isAuthenticated = useAuth((state) => state.isAuthenticated);
   const firstName = useAuth((state) => state.user?.firstName);
   const lastName = useAuth((state) => state.user?.lastName);
@@ -27,8 +30,11 @@ export default function User() {
     setAnchorEl(null);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    closeMenu();
     logout();
+    await router.invalidate();
+    await navigate({ to: "/" });
   };
 
   return isAuthenticated ? (

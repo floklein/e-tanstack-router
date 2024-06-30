@@ -1,4 +1,8 @@
-import { createLazyRoute, useNavigate } from "@tanstack/react-router";
+import {
+  createLazyRoute,
+  useNavigate,
+  useRouter,
+} from "@tanstack/react-router";
 import { loginRoute } from "../router/loginRoute";
 import {
   Button,
@@ -18,6 +22,7 @@ export const LoginRoute = createLazyRoute("/login")({
 });
 
 function Login() {
+  const router = useRouter();
   const navigate = useNavigate();
   const { redirect } = loginRoute.useSearch();
 
@@ -27,6 +32,7 @@ function Login() {
 
   const handleLogin = (username: string, password: string) => async () => {
     login(await loginUser(username, password));
+    await router.invalidate();
     await navigate({ to: redirect ?? "/" });
   };
 

@@ -8,9 +8,11 @@ export const productSchema = z.object({
   images: z.array(z.string()),
 });
 
-export const productsSchema = z.object({
-  products: z.array(productSchema),
-});
+export const productsSchema = z
+  .object({
+    products: z.array(productSchema),
+  })
+  .catch({ products: [] });
 
 export const userSchema = z.object({
   id: z.number(),
@@ -24,9 +26,11 @@ export const userSchema = z.object({
 
 export type User = z.infer<typeof userSchema>;
 
-export const usersSchema = z.object({
-  users: z.array(userSchema),
-});
+export const usersSchema = z
+  .object({
+    users: z.array(userSchema),
+  })
+  .catch({ users: [] });
 
 export const loginSchema = z.object({
   id: z.number(),
