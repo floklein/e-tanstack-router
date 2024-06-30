@@ -1,11 +1,10 @@
 import { TextField } from "@mui/material";
 import { ChangeEvent, useRef, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
-import { productsRoute } from "../router/productsRoute";
+import { ProductsRoute } from "./Products";
 
 export default function Search() {
-  const navigate = useNavigate({ from: productsRoute.fullPath });
-  const { search } = productsRoute.useSearch();
+  const navigate = ProductsRoute.useNavigate();
+  const { search } = ProductsRoute.useSearch();
 
   const [searchValue, setSearchValue] = useState(search ?? "");
   const navigateDebounce = useRef<ReturnType<typeof setTimeout>>();

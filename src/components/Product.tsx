@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Masonry } from "@mui/lab";
-import { productRoute } from "../router/productRoute";
 
 export const ProductRoute = createLazyRoute("/product/$productId")({
   component: Product,
@@ -22,8 +21,8 @@ const Image = styled("img")({
 });
 
 function Product() {
-  const { productId } = productRoute.useParams();
-  const product = productRoute.useLoaderData();
+  const { productId } = ProductRoute.useParams();
+  const product = ProductRoute.useLoaderData();
 
   const previous = Number(productId) - 1;
   const next = Number(productId) + 1;

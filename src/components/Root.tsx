@@ -1,9 +1,23 @@
-import { Link, Outlet, ScrollRestoration } from "@tanstack/react-router";
-import { AppBar, IconButton, Stack, Toolbar, Typography } from "@mui/material";
+import {
+  Link,
+  Outlet,
+  ScrollRestoration,
+  useRouterState,
+} from "@tanstack/react-router";
+import {
+  AppBar,
+  IconButton,
+  LinearProgress,
+  Stack,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
 import User from "./User";
 
 export default function Root() {
+  const loading = useRouterState({ select: (state) => state.isLoading });
+
   return (
     <>
       <ScrollRestoration getKey={(location) => location.pathname} />
@@ -20,6 +34,14 @@ export default function Root() {
           </Stack>
         </Toolbar>
       </AppBar>
+      {loading && (
+        <LinearProgress
+          sx={{
+            position: "fixed",
+            width: 1,
+          }}
+        />
+      )}
       <Outlet />
     </>
   );

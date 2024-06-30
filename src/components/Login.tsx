@@ -1,9 +1,4 @@
-import {
-  createLazyRoute,
-  useNavigate,
-  useRouter,
-} from "@tanstack/react-router";
-import { loginRoute } from "../router/loginRoute";
+import { createLazyRoute, useRouter } from "@tanstack/react-router";
 import {
   Button,
   Card,
@@ -23,10 +18,10 @@ export const LoginRoute = createLazyRoute("/login")({
 
 function Login() {
   const router = useRouter();
-  const navigate = useNavigate();
-  const { redirect } = loginRoute.useSearch();
 
-  const users = loginRoute.useLoaderData();
+  const navigate = LoginRoute.useNavigate();
+  const { redirect } = LoginRoute.useSearch();
+  const users = LoginRoute.useLoaderData();
 
   const login = useAuth((state) => state.login);
 

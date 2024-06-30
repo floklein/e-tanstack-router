@@ -10,7 +10,6 @@ import {
   styled,
   alpha,
 } from "@mui/material";
-import { productsRoute } from "../router/productsRoute";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Search from "./Search";
 
@@ -35,7 +34,7 @@ const Counter = styled(Typography)(({ theme }) => ({
 }));
 
 function Products() {
-  const products = productsRoute.useLoaderData();
+  const products = ProductsRoute.useLoaderData();
 
   return (
     <Container>

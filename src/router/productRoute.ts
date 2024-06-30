@@ -5,7 +5,9 @@ import { rootRoute } from "./rootRoute";
 export const productRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "product/$productId",
-  loader: ({ params }) => fetchProduct(params.productId),
+  loader: async ({ params }) => {
+    return await fetchProduct(params.productId);
+  },
 }).lazy(() =>
   import("../components/Product").then((module) => module.ProductRoute),
 );

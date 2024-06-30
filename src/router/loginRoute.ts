@@ -16,7 +16,9 @@ export const loginRoute = createRoute({
   validateSearch: z.object({
     redirect: z.string().optional(),
   }),
-  loader: () => fetchUsers(),
+  loader: async () => {
+    return await fetchUsers();
+  },
 }).lazy(() =>
   import("../components/Login").then((module) => module.LoginRoute),
 );
