@@ -1,8 +1,13 @@
 import { createTheme } from "@mui/material/styles";
-import { grey } from "@mui/material/colors";
 import type {} from "@mui/lab/themeAugmentation";
 
 const theme = createTheme({
+  palette: {
+    mode: "dark",
+    background: {
+      paper: "#222222",
+    },
+  },
   components: {
     MuiTypography: {
       styleOverrides: {
@@ -14,13 +19,6 @@ const theme = createTheme({
           "pre&": {
             whiteSpace: "pre-wrap",
           },
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        elevation0: {
-          backgroundColor: grey[100],
         },
       },
     },

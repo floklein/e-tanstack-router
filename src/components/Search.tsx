@@ -1,16 +1,21 @@
 import { TextField } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { productsRoute } from "../routes/productsRoute";
 
 export default function Search() {
   const navigate = useNavigate({ from: productsRoute.fullPath });
   const { search } = productsRoute.useSearch();
+
   const [searchValue, setSearchValue] = useState(search ?? "");
+  const navigateDebounce = useRef<ReturnType<typeof setTimeout>>();
 
   async function onSearchChange(event: ChangeEvent<HTMLInputElement>) {
     setSearchValue(event.target.value);
-    await navigate({ search: { search: event.target.value || undefined } });
+    clearTimeout(navigateDebounce.current);
+    navigateDebounce.current = setTimeout(() => {
+      navigate({ search: { search: event.target.value || undefined } });
+    }, 200);
   }
 
   return (

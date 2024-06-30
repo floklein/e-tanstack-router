@@ -8,6 +8,7 @@ import {
   CardMedia,
   CardContent,
   styled,
+  alpha,
 } from "@mui/material";
 import { productsRoute } from "../routes/productsRoute";
 import Grid2 from "@mui/material/Unstable_Grid2";
@@ -26,10 +27,10 @@ const Counter = styled(Typography)(({ theme }) => ({
   paddingRight: theme.spacing(0.75),
   paddingTop: theme.spacing(0.5),
   paddingBottom: theme.spacing(0.5),
-  color: "white",
+  color: theme.palette.common.white,
   borderRadius: theme.shape.borderRadius,
   lineHeight: 1,
-  backgroundColor: "#00000080",
+  backgroundColor: alpha(theme.palette.common.black, 0.5),
   transform: "translateY(-100%)",
 }));
 
@@ -55,6 +56,7 @@ function Products() {
                   component="img"
                   image={product.thumbnail}
                   alt={product.title}
+                  loading="lazy"
                 />
                 {product.images.length > 1 && (
                   <Counter variant="caption">
