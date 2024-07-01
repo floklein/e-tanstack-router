@@ -49,12 +49,12 @@ export async function loginUser(username: string, password: string) {
 
 export async function fetchCarts() {
   const { carts } = cartsSchema.parse(
-    await (await fetch("https://dummyjson.com/carts")).json(),
+    await (await fetch("https://dummyjson.com/carts?limit=0")).json(),
   );
   return carts;
 }
 
-export async function fetchCart(userId: number) {
+export async function fetchUserCarts(userId: number) {
   const { carts } = cartsSchema.parse(
     await (await fetch(`https://dummyjson.com/carts/user/${userId}`)).json(),
   );

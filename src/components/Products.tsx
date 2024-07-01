@@ -63,7 +63,7 @@ export default function Products() {
                 <CardContent>
                   <Typography variant="h6">{product.title}</Typography>
                   <Typography variant="body2" color="textSecondary">
-                    ${product.price} EUR
+                    {product.price} EUR
                   </Typography>
                 </CardContent>
               </CardActionArea>

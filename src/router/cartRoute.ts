@@ -4,7 +4,7 @@ import {
   redirect,
 } from "@tanstack/react-router";
 import { rootRoute } from "./rootRoute";
-import { fetchCart } from "../api";
+import { fetchUserCarts } from "../api";
 
 export const cartRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -19,6 +19,6 @@ export const cartRoute = createRoute({
       });
     }
   },
-  loader: ({ context }) => fetchCart(context.auth.user!.id),
+  loader: ({ context }) => fetchUserCarts(context.auth.user!.id),
   component: lazyRouteComponent(() => import("../components/Cart")),
 });

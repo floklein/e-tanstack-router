@@ -1,4 +1,4 @@
-import { getRouteApi, useRouter } from "@tanstack/react-router";
+import { Await, getRouteApi, useRouter } from "@tanstack/react-router";
 import {
   Button,
   Card,
@@ -11,6 +11,7 @@ import {
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { loginUser } from "../api";
 import { useAuth } from "../zustand/auth";
+import { Suspense } from "react";
 
 const loginRoute = getRouteApi("/login");
 
@@ -19,7 +20,7 @@ export default function Login() {
 
   const navigate = loginRoute.useNavigate();
   const redirect = loginRoute.useSearch({ select: (s) => s.redirect });
-  const { users } = loginRoute.useLoaderData();
+  const { users, deferredCarts } = loginRoute.useLoaderData();
 
   const login = useAuth((state) => state.login);
 
@@ -39,11 +40,18 @@ export default function Login() {
                 component="img"
                 image={user.image}
                 alt={user.username}
+                loading="lazy"
               />
               <CardContent>
                 <Typography variant="h5">{user.username}</Typography>
                 <Typography variant="body2" noWrap color="textSecondary">
-                  {user.email}
+                  <Suspense fallback="...">
+                    <Await promise={deferredCarts}>
+                      {(carts) =>
+                        `${carts.filter((c) => c.userId === user.id).length ?? "No"} carts`
+                      }
+                    </Await>
+                  </Suspense>
                 </Typography>
               </CardContent>
               <CardActions>

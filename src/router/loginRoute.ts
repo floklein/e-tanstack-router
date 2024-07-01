@@ -22,9 +22,9 @@ export const loginRoute = createRoute({
     redirect: z.string().optional(),
   }),
   loader: async () => {
+    const cartsPromise = fetchCarts();
     const users = await fetchUsers();
-    const carts = defer(fetchCarts());
-    return { users, carts };
+    return { users, deferredCarts: defer(cartsPromise) };
   },
   component: lazyRouteComponent(() => import("../components/Login")),
 });

@@ -54,8 +54,12 @@ export const cartProductSchema = z.object({
 });
 
 export const cartSchema = z.object({
+  id: z.number(),
   products: z.array(cartProductSchema),
+  total: z.number(),
   userId: z.number(),
+  totalProducts: z.number(),
+  totalQuantity: z.number(),
 });
 
 export const cartsSchema = z.object({
