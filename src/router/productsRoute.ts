@@ -10,10 +10,7 @@ export const productsRoute = createRoute({
     search: z.string().optional(),
   }),
   loaderDeps: ({ search: { search } }) => ({ search }),
-  loader: async ({ deps: { search } }) => {
-    return search !== undefined
-      ? await searchProducts(search)
-      : await fetchProducts();
-  },
+  loader: ({ deps: { search } }) =>
+    search !== undefined ? searchProducts(search) : fetchProducts(),
   component: lazyRouteComponent(() => import("../components/Products")),
 });

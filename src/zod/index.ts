@@ -43,3 +43,21 @@ export const loginSchema = z.object({
 });
 
 export type Login = z.infer<typeof loginSchema>;
+
+export const cartProductSchema = z.object({
+  id: z.number(),
+  title: z.string(),
+  price: z.number(),
+  quantity: z.number(),
+  total: z.number(),
+  thumbnail: z.string(),
+});
+
+export const cartSchema = z.object({
+  products: z.array(cartProductSchema),
+  userId: z.number(),
+});
+
+export const cartsSchema = z.object({
+  carts: z.array(cartSchema),
+});

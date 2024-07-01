@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { getRouteApi, Link } from "@tanstack/react-router";
 import {
   Container,
   Toolbar,
@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Search from "./Search";
-import { productsRoute } from "../router/productsRoute";
 
 const Counter = styled(Typography)(({ theme }) => ({
   display: "inline-block",
@@ -29,6 +28,8 @@ const Counter = styled(Typography)(({ theme }) => ({
   backgroundColor: alpha(theme.palette.common.black, 0.5),
   transform: "translateY(-100%)",
 }));
+
+const productsRoute = getRouteApi("/");
 
 export default function Products() {
   const products = productsRoute.useLoaderData();

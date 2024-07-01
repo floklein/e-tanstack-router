@@ -1,3 +1,9 @@
+import { getRouteApi } from "@tanstack/react-router";
+
+const cartRoute = getRouteApi("/cart");
+
 export default function Cart() {
-  return <div>Cart</div>;
+  const cart = cartRoute.useLoaderData();
+
+  return <div>${JSON.stringify(cart)}</div>;
 }

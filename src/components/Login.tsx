@@ -1,4 +1,4 @@
-import { useRouter } from "@tanstack/react-router";
+import { getRouteApi, useRouter } from "@tanstack/react-router";
 import {
   Button,
   Card,
@@ -11,14 +11,15 @@ import {
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { loginUser } from "../api";
 import { useAuth } from "../zustand/auth";
-import { loginRoute } from "../router/loginRoute";
+
+const loginRoute = getRouteApi("/login");
 
 export default function Login() {
   const router = useRouter();
 
   const navigate = loginRoute.useNavigate();
   const redirect = loginRoute.useSearch({ select: (s) => s.redirect });
-  const users = loginRoute.useLoaderData();
+  const { users } = loginRoute.useLoaderData();
 
   const login = useAuth((state) => state.login);
 

@@ -1,6 +1,8 @@
 import { TextField } from "@mui/material";
+import { getRouteApi } from "@tanstack/react-router";
 import { ChangeEvent, useRef, useState } from "react";
-import { productsRoute } from "../router/productsRoute";
+
+const productsRoute = getRouteApi("/");
 
 export default function Search() {
   const navigate = productsRoute.useNavigate();

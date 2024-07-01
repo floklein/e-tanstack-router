@@ -1,4 +1,5 @@
 import {
+  cartsSchema,
   loginSchema,
   productSchema,
   productsSchema,
@@ -44,4 +45,18 @@ export async function loginUser(username: string, password: string) {
       })
     ).json(),
   );
+}
+
+export async function fetchCarts() {
+  const { carts } = cartsSchema.parse(
+    await (await fetch("https://dummyjson.com/carts")).json(),
+  );
+  return carts;
+}
+
+export async function fetchCart(userId: number) {
+  const { carts } = cartsSchema.parse(
+    await (await fetch(`https://dummyjson.com/carts/user/${userId}`)).json(),
+  );
+  return carts;
 }
